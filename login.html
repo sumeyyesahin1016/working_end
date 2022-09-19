@@ -1,0 +1,109 @@
+<script> var mtoken = "1"; </script>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YURTDIŞI KARGO</title>
+    <link rel="icon" href="img/logo.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="assets/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <style>
+
+        header{
+            padding: 60px;
+        }
+        .card{
+            border-style: none;
+            border-radius: 10px;
+        }
+        body{
+            background-color:   #fcf5f8 ;
+        }
+
+        #floatingInput{
+            font-weight: bold;
+            color: #a80055;
+            background-color:#fcf5f8  ;
+        }
+        #floatingPassword{
+            font-weight: bold;
+            color: #a80055;
+            background-color:#fcf5f8  ;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top " style="background-color:#a80055">
+    <div class="container-fluid">
+        <a href="#">
+            <img src="img/icon.png" style="width: 40px" >
+        </a>
+    </div>
+</nav>
+<header>
+    <div id="wrapper">
+        <div id="login_form">
+            <h1>LOGIN FORM</h1>
+            <form method="post"  onsubmit="do_login();">
+                <input type="text" name="username" id="username" placeholder="Enter Email">
+                <br>
+                <input type="password" name="password" id="password" placeholder="***********">
+                <br>
+                <input type="submit" name="login" value="DO LOGIN" id="login_button">
+            </form>
+        </div>
+    </div>
+</header>
+
+<footer class="footer">
+    <div class="jumbotron" style="background-color: #a80055 ;margin-bottom:0px ;height: 50px" >
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-12  col-sm-12  text-center text-white " style="margin-top: 10px">
+                Copyright © 2021 <a href="#" style="color: #d1bd2d;text-decoration: none">Moda Selvim</a> <a href="#"></a> All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    function do_login()
+    {
+            $.ajax
+            ({
+                url: "http://kargokontrol.modaselvim.net:4554/api/v1/user/login" ,
+                method: "POST",
+                timeout: 0,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: JSON.stringify({
+                    "username": "sumeyye.sahin@modaselvim.com",
+                    "password": "1997Ss1997"
+                }),
+                success:function(response) {
+                    var username = response.data.username;
+                    var password = response.data.password;
+                    if(username!="username" && password!="password")
+                    {
+                        window.location.href="index.html";
+                    }
+                    else
+                    {
+                        alert("Wrong Details");
+                    }
+                    console.log(response);
+
+                }
+            });
+    }
+</script>
+
+</body>
+</html>
